@@ -1,8 +1,8 @@
-FROM nginx:latest                           
-MAINTAINER "demo"                           
+FROM nginx:latest
+MAINTAINER "developer"
 
-COPY ./website/index.html /usr/share/nginx/html/index.html   
+COPY ./website/index.html /usr/share/nginx/html/index.html
 
-EXPOSE 80                                            
+EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]
