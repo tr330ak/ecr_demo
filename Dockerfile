@@ -2,7 +2,7 @@ FROM nginx:latest
 MAINTAINER "developer"
 
 COPY ./website/index.html /usr/share/nginx/html/index.html
-COPY ./healthy /usr/share/nginx/html
+COPY ./website/healthy/a.html /usr/share/nginx/html/healthy/a.html
 
 EXPOSE 80
 
