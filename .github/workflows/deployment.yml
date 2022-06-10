@@ -54,7 +54,7 @@ jobs:
       - name: Update Kubernetes resources
         run: |
           echo ${{ steps.login-ecr.outputs.registry }}
-          echo ${{ steps.build-image.outputs.ecr_repository }}
-          echo ${{ steps.build-image.outputs.image_tag }}
+          echo ${{ steps.build-image.outputs.ECR_REPOSITORY }}
+          echo ${{ steps.build-image.outputs.IMAGE_TAG }}
           cd k8s-manifest-repo/overlays/dev/
           cat kustomization.yaml
