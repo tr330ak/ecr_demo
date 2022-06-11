@@ -54,10 +54,7 @@ jobs:
       - name: Update Kubernetes resources
         run: |
           pwd
-          cd k8s-manifest-repo/overlays/dev/
-          echo ${{ steps.login-ecr.outputs.registry }}/${{ steps.build-image.outputs.ecr_repository }}
-          echo \${{ steps.login-ecr.outputs.registry }}/\${{ steps.build-image.outputs.ecr_repository }}
-          echo ${{ steps.login-ecr.outputs.registry }}/${{ steps.build-image.outputs.ecr_repository }}:${{ steps.build-image.outputs.image_tag }}
-          cd k8s-manifest-repo/overlays/dev/
-          kustomize edit set image ${{ steps.login-ecr.outputs.registry }}/openpament=${{ steps.login-ecr.outputs.registry }}/openpament:${{ github.sha }}
+          echo ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}
+          echo ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}
+          kustomize edit set image ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}=${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}
           cat kustomization.yaml
