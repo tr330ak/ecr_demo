@@ -54,6 +54,7 @@ jobs:
       - name: Update Kubernetes resources
         run: |
           pwd
+          cd k8s-manifest-repo/overlays/dev/
           echo ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}
           echo ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}
           kustomize edit set image ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}=${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}
