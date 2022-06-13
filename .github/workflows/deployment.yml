@@ -59,3 +59,12 @@ jobs:
           echo ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}
           kustomize edit set image ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}=${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}
           cat kustomization.yaml
+
+      - name: Commit files
+        run: |
+          cd k8s-manifest-repo
+          git config --global user.email "tr330ak.cn@gmail.com"
+          git config --global user.name "tr330ak"
+          git commit -am "Update image tag"
+          git push -u origin main
+
